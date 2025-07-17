@@ -1,0 +1,59 @@
+name: Report Test Coverage
+
+on:
+  pull_request:
+    branches:
+      - main
+      - develop
+
+jobs:
+  coverage:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+
+      - name: Run tests with coverage
+        run: |
+          mvn clean verify
+
+      - name: Generate JaCoCo Coverage Report
+        run: |
+          mvn jacoco:report
+
+      - name: Parse Coverage Percentage
+        id: coverage
+        run: |
+          COVERAGE_LINE=$(grep -A 1 "<counter type=\"LINE\"" target/site/jacoco/jacoco.xml | tail -n 1)
+          MISSED=$(echo $COVERAGE_LINE | sed -n 's/.*missed="\([0-9]*\)".*/\1/p')
+          COVERED=$(echo $COVERAGE_LINE | sed -n 's/.*covered="\([0-9]*\)".*/\1/p')
+          TOTAL=$((MISSED + COVERED))
+          PERCENT=$((COVERED * 100 / TOTAL))
+          echo "Coverage is $PERCENT%"
+          echo "COVERAGE=$PERCENT" >> $GITHUB_ENV
+
+      - name: Comment coverage on PR
+        uses: actions/github-script@v6
+        if: github.event_name == 'pull_request'
+        with:
+          github-token: ${{ secrets.PAT_GITHUB_TOKEN }}
+          script: |
+            const coverage = process.env.COVERAGE;
+            const message = coverage < 80 
+              ? `❌ **Test Coverage:** ${coverage}% (Below required 80%)`
+              : `✅ **Test Coverage:** ${coverage}% (Above required 80%)`;
+            await github.rest.issues.createComment({
+              ...context.issue,
+              body: message
+            });
+
+            if (coverage < 80) {
+              core.setFailed("Test coverage is below 80%");
+            }

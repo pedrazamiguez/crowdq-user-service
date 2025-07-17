@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: "CrowdQ User Service"
+  profiles:
+    active: "local"
+  r2dbc:
+    username: ${CROWDQ_DB_USER}
+    password: ${CROWDQ_DB_PASSWORD}
+
+app:
+  version: "@project.version@"

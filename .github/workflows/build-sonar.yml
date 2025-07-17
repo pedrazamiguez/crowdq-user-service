@@ -41,14 +41,16 @@ jobs:
           restore-keys: ${{ runner.os }}-sonar
 
       - name: Run Tests with Coverage
+        working-directory: crowdq-user-service
         run: |
           mvn clean verify
 
       - name: Analyze with SonarQube
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        working-directory: crowdq-user-service
         run: |
-          mvn sonar:sonar \
-            -Dsonar.projectKey=CROWDQ \
+          mvn -B clean verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
+            -Dsonar.projectKey=Online-Bookstore \
             -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }} \
             -Dsonar.login=${{ secrets.SONAR_TOKEN }}

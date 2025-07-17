@@ -21,10 +21,12 @@ jobs:
           distribution: 'temurin'
 
       - name: Run tests with coverage
+        working-directory: crowdq-user-service
         run: |
           mvn clean verify
 
       - name: Generate JaCoCo Coverage Report
+        working-directory: crowdq-user-service
         run: |
           mvn jacoco:report
 

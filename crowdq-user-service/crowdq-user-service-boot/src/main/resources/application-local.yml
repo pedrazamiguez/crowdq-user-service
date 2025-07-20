@@ -1,6 +1,16 @@
+server:
+  port: 59100
+
 spring:
+
   r2dbc:
     url: r2dbc:postgresql://localhost:${CROWDQ_DB_PORT}/${CROWDQ_DB_NAME}
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://localhost:59000/realms/crowdq
 
 logging:
   level:

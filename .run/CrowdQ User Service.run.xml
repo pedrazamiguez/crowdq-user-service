@@ -1,7 +1,7 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="CrowdQ User Service" type="Application" factoryName="Application">
     <option name="envFilePaths">
-      <option value="$PROJECT_DIR$/../crowdq-infra/.env" />
+      <option value="$PROJECT_DIR$/crowdq-infra/.env" />
     </option>
     <option name="MAIN_CLASS_NAME" value="es.pedrazamiguez.crowdq.user.CrowdQUserServiceApplication" />
     <module name="crowdq-user-service-boot" />

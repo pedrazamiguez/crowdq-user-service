@@ -7,5 +7,15 @@ spring:
     username: ${CROWDQ_DB_USER}
     password: ${CROWDQ_DB_PASSWORD}
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info, metrics, prometheus
+  prometheus:
+    metrics:
+      export:
+        enabled: true
+
 app:
   version: "@project.version@"

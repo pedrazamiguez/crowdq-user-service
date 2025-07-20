@@ -1,6 +1,13 @@
 spring:
+
   r2dbc:
     url: r2dbc:postgresql://crowdq-postgres:${CROWDQ_DB_PORT}/${CROWDQ_DB_NAME}
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://auth-service:8080/realms/crowdq
 
 logging:
   level:

@@ -6,6 +6,11 @@ spring:
   r2dbc:
     url: r2dbc:postgresql://localhost:${CROWDQ_DB_PORT}/${CROWDQ_DB_NAME}
 
+  sql:
+    init:
+      mode: always
+      platform: postgres
+
   security:
     oauth2:
       resourceserver:

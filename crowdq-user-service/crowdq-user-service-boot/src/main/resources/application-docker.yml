@@ -7,7 +7,7 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: https://auth-service:8080/realms/crowdq
+          issuer-uri: https://auth-service:8443/realms/crowdq
 
 logging:
   level:

@@ -2,13 +2,11 @@ FROM eclipse-temurin:21-jdk-alpine AS builder
 
 WORKDIR /app
 COPY . .
-
 RUN ./mvnw clean package -DskipTests
 
-FROM eclipse-temurin:21-jre-alpine
+FROM crowdq/java-base:1.0.0
 
 WORKDIR /app
-
 COPY --from=builder /app/crowdq-user-service-boot/target/*.jar app.jar
 
 ENV SPRING_PROFILES_ACTIVE=docker

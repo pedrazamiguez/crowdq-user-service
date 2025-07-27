@@ -4,7 +4,7 @@
 To build the Docker image for the CrowdQ User Service, you can use the following command:
 
 ```bash
-docker build -t crowdq-user-service:0.0.1-SNAPSHOT .
+docker build -t crowdq/user-service:0.0.1-SNAPSHOT .
 ```
 
 Specify the desired tag (e.g., `0.0.1-SNAPSHOT`) as needed.

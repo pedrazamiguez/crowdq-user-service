@@ -18,12 +18,15 @@ public class FindUserByUsernameUseCaseImpl implements FindUserByUsernameUseCase 
   @Override
   public Mono<User> execute(String username) {
     log.info("Finding user by username: {}", username);
-    return userRepository.findByUsername(username)
+    return userRepository
+        .findByUsername(username)
         .doOnNext(user -> log.info("User found: {}", user))
-        .switchIfEmpty(Mono.defer(() -> {
-          log.warn("User not found for username: {}", username);
-          return Mono.empty();
-        }))
+        .switchIfEmpty(
+            Mono.defer(
+                () -> {
+                  log.warn("User not found for username: {}", username);
+                  return Mono.empty();
+                }))
         .doOnError(error -> log.error("Error finding user by username: {}", username, error));
   }
 }

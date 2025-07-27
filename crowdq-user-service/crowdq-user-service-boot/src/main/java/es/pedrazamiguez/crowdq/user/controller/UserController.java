@@ -21,7 +21,8 @@ public class UserController {
 
   @GetMapping("/{username}")
   public Mono<ResponseEntity<User>> findByUsername(@PathVariable String username) {
-    return findUserByUsernameUseCase.execute(username)
+    return findUserByUsernameUseCase
+        .execute(username)
         .map(ResponseEntity::ok)
         .defaultIfEmpty(ResponseEntity.noContent().build());
   }

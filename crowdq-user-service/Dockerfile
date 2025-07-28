@@ -4,7 +4,7 @@ WORKDIR /app
 COPY . .
 RUN ./mvnw clean package -DskipTests
 
-FROM crowdq/java-base:1.0.0
+FROM eclipse-temurin:21-jdk-alpine
 
 WORKDIR /app
 COPY --from=builder /app/crowdq-user-service-boot/target/*.jar app.jar

@@ -11,12 +11,6 @@ spring:
       mode: always
       platform: postgres
 
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          issuer-uri: https://localhost:59000/realms/crowdq
-
 logging:
   level:
     org.springframework.r2dbc: DEBUG

@@ -1,11 +1,21 @@
 spring:
+
   application:
     name: "CrowdQ User Service"
+
   profiles:
     active: "local"
+
   r2dbc:
     username: ${CROWDQ_DB_USER}
     password: ${CROWDQ_DB_PASSWORD}
+    pool:
+      initial-size: 5
+      max-size: 20
+      validation-query: SELECT 1
+      validation-depth: remote
+      max-life-time: 30m
+      max-idle-time: 10m
 
   security:
     oauth2:

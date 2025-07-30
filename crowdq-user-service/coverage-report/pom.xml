@@ -27,6 +27,10 @@
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
+            <artifactId>crowdq-user-service-api-rest</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
             <artifactId>crowdq-user-service-repository</artifactId>
         </dependency>
         <dependency>

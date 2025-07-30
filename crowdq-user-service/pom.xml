@@ -52,6 +52,9 @@
 
         <spring-boot.version>3.5.3</spring-boot.version>
 
+        <swagger-annotations.version>2.2.21</swagger-annotations.version>
+        <jackson-databind-nullable.version>0.2.6</jackson-databind-nullable.version>
+        <springdoc-openapi-ui.version>2.8.9</springdoc-openapi-ui.version>
         <projectlombok.version>1.18.34</projectlombok.version>
         <mapstruct.version>1.6.3</mapstruct.version>
 
@@ -61,6 +64,7 @@
 
         <jacoco-maven-plugin.version>0.8.13</jacoco-maven-plugin.version>
         <maven-compiler-plugin.version>3.14.0</maven-compiler-plugin.version>
+        <openapi-generator.version>7.13.0</openapi-generator.version>
         <spotless.version>2.44.4</spotless.version>
         <google-java-format.version>1.26.0</google-java-format.version>
 
@@ -81,6 +85,7 @@
     <modules>
         <module>crowdq-user-service-domain</module>
         <module>crowdq-user-service-application</module>
+        <module>crowdq-user-service-api-rest</module>
         <module>crowdq-user-service-infrastructure</module>
         <module>crowdq-user-service-boot</module>
         <module>coverage-report</module>
@@ -100,6 +105,11 @@
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
+                <artifactId>crowdq-user-service-api-rest</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
                 <artifactId>crowdq-user-service-infrastructure</artifactId>
                 <version>${project.version}</version>
             </dependency>
@@ -112,6 +122,21 @@
                 <groupId>${project.groupId}</groupId>
                 <artifactId>crowdq-user-service-boot</artifactId>
                 <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.swagger.core.v3</groupId>
+                <artifactId>swagger-annotations</artifactId>
+                <version>${swagger-annotations.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.openapitools</groupId>
+                <artifactId>jackson-databind-nullable</artifactId>
+                <version>${jackson-databind-nullable.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springdoc</groupId>
+                <artifactId>springdoc-openapi-starter-webflux-ui</artifactId>
+                <version>${springdoc-openapi-ui.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.projectlombok</groupId>
@@ -190,6 +215,11 @@
                         <source>${java.version}</source>
                         <target>${java.version}</target>
                     </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.openapitools</groupId>
+                    <artifactId>openapi-generator-maven-plugin</artifactId>
+                    <version>${openapi-generator.version}</version>
                 </plugin>
                 <plugin>
                     <groupId>com.diffplug.spotless</groupId>

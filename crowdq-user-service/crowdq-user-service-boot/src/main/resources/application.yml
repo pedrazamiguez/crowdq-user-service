@@ -23,6 +23,9 @@ spring:
         jwt:
           issuer-uri: https://cantalobos.isasecret.com/realms/crowdq
 
+  jackson:
+    default-property-inclusion: "non_null"
+
 management:
   endpoints:
     web:
@@ -35,3 +38,5 @@ management:
 
 app:
   version: "@project.version@"
+
+springdoc.swagger-ui.url: "/crowdq-user-service-api-spec.yml"

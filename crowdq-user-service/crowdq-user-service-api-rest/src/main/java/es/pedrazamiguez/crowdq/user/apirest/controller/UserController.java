@@ -1,9 +1,9 @@
 package es.pedrazamiguez.crowdq.user.apirest.controller;
 
 import es.pedrazamiguez.crowdq.user.apirest.mapper.UserRestMapper;
+import es.pedrazamiguez.crowdq.user.apispec.UserApi;
+import es.pedrazamiguez.crowdq.user.apispec.model.UserDto;
 import es.pedrazamiguez.crowdq.user.domain.usecase.FindUserByUsernameUseCase;
-import es.pedrazamiguez.crowdq.user.openapi.UserApi;
-import es.pedrazamiguez.crowdq.user.openapi.model.UserDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,7 +12,7 @@ import reactor.core.publisher.Mono;
 
 @RestController
 @RequiredArgsConstructor
-public final class UserController implements UserApi {
+public class UserController implements UserApi {
 
   private final FindUserByUsernameUseCase findUserByUsernameUseCase;
 

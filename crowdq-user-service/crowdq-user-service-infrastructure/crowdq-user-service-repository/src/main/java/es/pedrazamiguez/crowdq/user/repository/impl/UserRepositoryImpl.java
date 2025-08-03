@@ -12,7 +12,7 @@ import reactor.core.publisher.Mono;
 @Slf4j
 @Repository
 @RequiredArgsConstructor
-public final class UserRepositoryImpl implements UserRepository {
+public class UserRepositoryImpl implements UserRepository {
 
   private final UserReactiveRepository userReactiveRepository;
 

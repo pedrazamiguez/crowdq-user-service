@@ -11,7 +11,7 @@ import reactor.core.publisher.Mono;
 @Slf4j
 @Component
 @RequiredArgsConstructor
-public final class FindUserByUsernameUseCaseImpl implements FindUserByUsernameUseCase {
+public class FindUserByUsernameUseCaseImpl implements FindUserByUsernameUseCase {
 
   private final UserRepository userRepository;
 

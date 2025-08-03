@@ -16,8 +16,7 @@ import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 
 @Component
-public final class ReactiveJwtAuthConverter
-    implements Converter<Jwt, Mono<AbstractAuthenticationToken>> {
+public class ReactiveJwtAuthConverter implements Converter<Jwt, Mono<AbstractAuthenticationToken>> {
 
   private final ReactiveJwtAuthenticationConverterAdapter delegate;
 

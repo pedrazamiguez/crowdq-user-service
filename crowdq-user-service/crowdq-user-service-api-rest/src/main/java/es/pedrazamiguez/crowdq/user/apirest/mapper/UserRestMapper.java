@@ -1,7 +1,7 @@
 package es.pedrazamiguez.crowdq.user.apirest.mapper;
 
+import es.pedrazamiguez.crowdq.user.apispec.model.UserDto;
 import es.pedrazamiguez.crowdq.user.domain.entity.User;
-import es.pedrazamiguez.crowdq.user.openapi.model.UserDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;

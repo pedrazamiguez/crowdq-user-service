@@ -10,7 +10,7 @@ import reactor.core.publisher.Mono;
 
 @Slf4j
 @Controller
-public final class IndexController {
+public class IndexController {
 
   @GetMapping("/")
   public Mono<Void> index(final ServerWebExchange exchange) {

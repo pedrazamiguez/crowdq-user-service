@@ -11,7 +11,7 @@ import org.springframework.security.web.server.SecurityWebFilterChain;
 @Configuration
 @EnableWebFluxSecurity
 @EnableReactiveMethodSecurity
-public final class SecurityConfiguration {
+public class SecurityConfiguration {
 
   private final ReactiveJwtAuthConverter reactiveJwtAuthConverter;
 

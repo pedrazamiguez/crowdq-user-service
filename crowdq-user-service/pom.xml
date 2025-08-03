@@ -86,6 +86,7 @@
     <modules>
         <module>crowdq-user-service-domain</module>
         <module>crowdq-user-service-application</module>
+        <module>crowdq-user-service-api-spec</module>
         <module>crowdq-user-service-api-rest</module>
         <module>crowdq-user-service-infrastructure</module>
         <module>crowdq-user-service-boot</module>
@@ -102,6 +103,11 @@
             <dependency>
                 <groupId>${project.groupId}</groupId>
                 <artifactId>crowdq-user-service-application</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>crowdq-user-service-api-spec</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>

@@ -4,9 +4,13 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CrowdQUserServiceApplication {
+public final class CrowdQUserServiceApplication {
 
-  public static void main(String[] args) {
+  private CrowdQUserServiceApplication() {
+    // Prevent instantiation
+  }
+
+  public static void main(final String[] args) {
     SpringApplication.run(CrowdQUserServiceApplication.class, args);
   }
 }

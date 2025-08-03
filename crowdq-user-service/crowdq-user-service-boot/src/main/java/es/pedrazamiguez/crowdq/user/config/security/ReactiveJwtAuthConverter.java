@@ -1,6 +1,9 @@
 package es.pedrazamiguez.crowdq.user.config.security;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Map;
+import java.util.Objects;
 import java.util.stream.Collectors;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.security.authentication.AbstractAuthenticationToken;
@@ -13,7 +16,8 @@ import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 
 @Component
-public class ReactiveJwtAuthConverter implements Converter<Jwt, Mono<AbstractAuthenticationToken>> {
+public final class ReactiveJwtAuthConverter
+    implements Converter<Jwt, Mono<AbstractAuthenticationToken>> {
 
   private final ReactiveJwtAuthenticationConverterAdapter delegate;
 
@@ -24,11 +28,11 @@ public class ReactiveJwtAuthConverter implements Converter<Jwt, Mono<AbstractAut
   }
 
   @Override
-  public Mono<AbstractAuthenticationToken> convert(Jwt source) {
+  public Mono<AbstractAuthenticationToken> convert(final Jwt source) {
     return delegate.convert(source);
   }
 
-  private Collection<GrantedAuthority> extractAuthorities(Jwt jwt) {
+  private Collection<GrantedAuthority> extractAuthorities(final Jwt jwt) {
     Map<String, Object> realmAccess = jwt.getClaim("realm_access");
     if (realmAccess == null || !(realmAccess.get("roles") instanceof Collection<?> roles)) {
       return Collections.emptyList();

@@ -10,10 +10,10 @@ import reactor.core.publisher.Mono;
 
 @Slf4j
 @Controller
-public class IndexController {
+public final class IndexController {
 
   @GetMapping("/")
-  public Mono<Void> index(ServerWebExchange exchange) {
+  public Mono<Void> index(final ServerWebExchange exchange) {
     log.info("Redirecting to Swagger UI");
     return Mono.fromRunnable(
             () -> {

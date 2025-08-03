@@ -11,14 +11,14 @@ import reactor.core.publisher.Mono;
 @Slf4j
 @Component
 @RequiredArgsConstructor
-public class FindUserByUsernameUseCaseImpl implements FindUserByUsernameUseCase {
+public final class FindUserByUsernameUseCaseImpl implements FindUserByUsernameUseCase {
 
   private final UserRepository userRepository;
 
   @Override
-  public Mono<User> execute(String username) {
+  public Mono<User> execute(final String username) {
     log.info("Finding user by username: {}", username);
-    return userRepository
+    return this.userRepository
         .findByUsername(username)
         .doOnNext(user -> log.info("User found: {}", user))
         .switchIfEmpty(

@@ -11,7 +11,7 @@ import org.springframework.security.web.server.SecurityWebFilterChain;
 @Configuration
 @EnableWebFluxSecurity
 @EnableReactiveMethodSecurity
-public class SecurityConfiguration {
+public final class SecurityConfiguration {
 
   private final ReactiveJwtAuthConverter reactiveJwtAuthConverter;
 
@@ -20,7 +20,7 @@ public class SecurityConfiguration {
   }
 
   @Bean
-  public SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity http) {
+  public SecurityWebFilterChain securityWebFilterChain(final ServerHttpSecurity http) {
     return http.csrf(ServerHttpSecurity.CsrfSpec::disable)
         .authorizeExchange(
             exchanges ->

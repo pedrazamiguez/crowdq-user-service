@@ -12,14 +12,14 @@ import reactor.core.publisher.Mono;
 @Slf4j
 @Repository
 @RequiredArgsConstructor
-public class UserRepositoryImpl implements UserRepository {
+public final class UserRepositoryImpl implements UserRepository {
 
   private final UserReactiveRepository userReactiveRepository;
 
   private final UserEntityMapper userEntityMapper;
 
   @Override
-  public Mono<User> findByUsername(String username) {
+  public Mono<User> findByUsername(final String username) {
     log.info("Finding user by username: {}", username);
     return userReactiveRepository
         .findByUsername(username)

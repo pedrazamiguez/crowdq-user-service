@@ -12,7 +12,7 @@ import reactor.core.publisher.Mono;
 
 @RestController
 @RequiredArgsConstructor
-public class UserController implements UserApi {
+public final class UserController implements UserApi {
 
   private final FindUserByUsernameUseCase findUserByUsernameUseCase;
 
@@ -20,9 +20,9 @@ public class UserController implements UserApi {
 
   @Override
   public Mono<ResponseEntity<UserDto>> getUserByUsername(
-      String username, ServerWebExchange exchange) {
+      final String username, final ServerWebExchange exchange) {
 
-    return findUserByUsernameUseCase
+    return this.findUserByUsernameUseCase
         .execute(username)
         .map(this.userRestMapper::toDto)
         .map(ResponseEntity::ok)
